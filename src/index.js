@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './components/Contact/App';
+import App from './components/emoji/App';
 
 ReactDOM.render(
   <App />,
