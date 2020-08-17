@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './components/Timer App/App';
+import App from './components/Login/App';
 
 ReactDOM.render(
   <App />,
