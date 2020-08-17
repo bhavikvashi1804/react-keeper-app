@@ -11,7 +11,7 @@ function App() {
     <div>
       <Header />
       {notes.map(note=><Note
-        key={note.id}
+        key={note.key}
         title={note.title}
         content={note.content}
       />)}
