@@ -6,6 +6,8 @@ import Note from "./Note";
 
 import notes from './notes';
 
+import "./keep.css";
+
 function App() {
   return (
     <div>
