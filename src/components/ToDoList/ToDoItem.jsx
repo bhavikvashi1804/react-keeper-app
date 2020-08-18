@@ -8,7 +8,7 @@ function ToDoItem(props) {
     });
   }
   return (<div onClick={changeDoneStatus}>
-    <li style={{textDecoration:taskDone?"line-through":null}}>{props.toDoItemText}</li>
+    <li style={{textDecoration:taskDone?"line-through":"none"}}>{props.toDoItemText}</li>
   </div>);
 }
 
