@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './components/ContactMe/App';
+import App from './components/ToDoList/App';
 
 ReactDOM.render(
   <App />,
