@@ -20,18 +20,24 @@ function App() {
   }
 
   function handleChange(event) {
-    var oldFullName=fullName;
-    if (event.target.name === "fName") {
-      setFullName({
-        fName:event.target.value,
-        lName: oldFullName.lName,
-      });
-    } else if (event.target.name === "lName") {
-      setFullName({
-        fName:oldFullName.fName,
-        lName:event.target.value,
-      });
-    }
+    //const newValue=event.target.value;
+    //const inputTypeName=event.target.name;
+    //you must have to get the input type name and new value before setting it
+    //now use the object destructuring
+    const { value, name } = event.target;
+    setFullName((prevValue) => {
+      if (name === "fName") {
+        return {
+          fName: value,
+          lName: prevValue.lName,
+        };
+      } else if (name === "lName") {
+        return {
+          fName: prevValue.fName,
+          lName: value,
+        };
+      }
+    });
   }
 
   return (
