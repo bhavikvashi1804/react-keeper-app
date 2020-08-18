@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import "./style.css";
 
 function App() {
-  const [fname, setFname] = useState("");
-  const [lname, setLname] = useState("");
-  const [headingText, setHeadingText] = useState("");
+  const [fullName, setFullName] = useState({
+    fName: "",
+    lName: "",
+  });
+
   const [isMouseOver, setMouseOver] = useState(false);
 
   function handleClick(event) {}
@@ -18,17 +20,24 @@ function App() {
   }
 
   function handleChange(event) {
+    var oldFullName=fullName;
     if (event.target.name === "fName") {
-      setFname(event.target.value);
+      setFullName({
+        fName:event.target.value,
+        lName: oldFullName.lName,
+      });
     } else if (event.target.name === "lName") {
-      setLname(event.target.value);
+      setFullName({
+        fName:oldFullName.fName,
+        lName:event.target.value,
+      });
     }
   }
 
   return (
     <div className="container">
       <h1>
-        Hello {fname} {lname}{" "}
+        Hello {fullName.fName} {fullName.lName}
       </h1>
       <form onSubmit={handleClick}>
         <input
@@ -36,13 +45,13 @@ function App() {
           name="fName"
           onChange={handleChange}
           placeholder="First Name"
-          value={fname}
+          value={fullName.fName}
         />
         <input
           type="text"
           name="lName"
           placeholder="Last Name"
-          value={lname}
+          value={fullName.lName}
           onChange={handleChange}
         />
         <button
