@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import ToDoItem from './ToDoItem';
+import ToDoItem from "./ToDoItem";
 
 import "./style.css";
 
@@ -17,6 +17,17 @@ function App() {
 
   function handleTaskChange(event) {
     setTaskName(event.target.value);
+  }
+
+  function deleteTask(todoItemIndex) {
+    //console.log("Delete this item");
+    setTasks((prevValue) => {
+      return prevValue.filter(
+        (item,index)=>{
+          return index!== todoItemIndex;
+        }
+      );
+    });
   }
 
   return (
@@ -37,8 +48,13 @@ function App() {
       </div>
       <div>
         <ul>
-          {tasks.map(todoItem => (
-            <ToDoItem  toDoItemText={todoItem}/>
+          {tasks.map((todoItem, todoItemIndex) => (
+            <ToDoItem
+              key={todoItemIndex}
+              id={todoItemIndex}
+              toDoItemText={todoItem}
+              onChecked={deleteTask}
+            />
           ))}
         </ul>
       </div>

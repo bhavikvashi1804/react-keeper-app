@@ -1,10 +1,15 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 
 function ToDoItem(props) {
-  
-  return (<div >
-    <li >{props.toDoItemText}</li>
-  </div>);
+  return (
+    <div
+      onClick={() => {
+        props.onChecked(props.id);
+      }}
+    >
+      <li>{props.toDoItemText}</li>
+    </div>
+  );
 }
 
 export default ToDoItem;
