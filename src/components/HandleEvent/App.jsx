@@ -3,12 +3,16 @@ import "./style.css";
 
 function App() {
   const [name, setName] = useState("");
+  const [headingText, setHeadingText] = useState("");
   const [isMouseOver, setMouseOver] = useState(false);
 
-  
-  function handleClick() {
-    console.log("Button is clicked");
+  function handleClick(event) {
+    //console.log("Button is clicked");
     //setHeadingText("Data uploaded");
+    setHeadingText(name);
+    event.preventDefault();
+    //prevent Default will help us to rerender the same page 
+    //if we use from onSubmit then it will re-render the page and lost the prev values
   }
 
   function onMouseOverFunction() {
@@ -30,21 +34,23 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Hello {name}</h1>
-      <input
-        type="text"
-        onChange={handleChange}
-        placeholder="What's your name?"
-        value={name}
-      />
-      <button
-        style={{ backgroundColor: isMouseOver ? "black" : "white" }}
-        onClick={handleClick}
-        onMouseOver={onMouseOverFunction}
-        onMouseOut={onMouseOutFunction}
-      >
-        Submit
-      </button>
+      <h1>Hello {headingText}</h1>
+      <form onSubmit={handleClick}>
+        <input
+          type="text"
+          onChange={handleChange}
+          placeholder="What's your name?"
+          value={name}
+        />
+        <button
+          style={{ backgroundColor: isMouseOver ? "black" : "white" }}
+          onMouseOver={onMouseOverFunction}
+          onMouseOut={onMouseOutFunction}
+          type="submit"
+        >
+          Submit
+        </button>
+      </form>
     </div>
   );
 }
