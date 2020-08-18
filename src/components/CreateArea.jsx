@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import './keep.css';
+
 function CreateArea(props) {
   const [note, updateNote] = useState({
     title: "",
@@ -22,7 +24,7 @@ function CreateArea(props) {
 
   return (
     <div>
-      <form>
+      <form className="create-note">
         <input
           name="title"
           value={note.title}
