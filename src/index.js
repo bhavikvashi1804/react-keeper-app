@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './components/HandleEvent/App';
+import App from './components/ContactMe/App';
 
 ReactDOM.render(
   <App />,
