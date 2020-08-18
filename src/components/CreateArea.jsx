@@ -9,7 +9,15 @@ function CreateArea(props) {
   function handleNoteChange(event) {
     const { name, value } = event.target;
     updateNote((prevValue) => ({ ...prevValue, [name]: value }));
-   
+  }
+
+  function submitNote(event) {
+    props.onAddNote(note);
+    updateNote({
+      title: "",
+      content: "",
+    });
+    event.preventDefault();
   }
 
   return (
@@ -28,18 +36,7 @@ function CreateArea(props) {
           rows="3"
           onChange={handleNoteChange}
         />
-        <button
-          onClick={() => {
-            props.addNote(note);
-            updateNote({
-              title: "",
-              content: "",
-            });
-            
-          }}
-        >
-          Add
-        </button>
+        <button onClick={submitNote}>Add</button>
       </form>
     </div>
   );
