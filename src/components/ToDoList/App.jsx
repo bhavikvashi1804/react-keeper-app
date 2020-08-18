@@ -1,23 +1,22 @@
 import React, { useState } from "react";
 
 import ToDoItem from "./ToDoItem";
+import InputArea from "./InputArea";
 
 import "./style.css";
 
 function App() {
-  const [taskName, setTaskName] = useState("");
+  
   const [tasks, setTasks] = useState([]);
 
-  function handleAddButton() {
+  function handleAddButton(newTaskName) {
     setTasks((prevValue) => {
-      return [...prevValue, taskName];
+      return [...prevValue, newTaskName];
     });
-    setTaskName("");
+   
   }
 
-  function handleTaskChange(event) {
-    setTaskName(event.target.value);
-  }
+  
 
   function deleteTask(todoItemIndex) {
     //console.log("Delete this item");
@@ -36,15 +35,7 @@ function App() {
         <h1>To-Do List</h1>
       </div>
       <div className="form">
-        <input
-          type="text"
-          name="taskName"
-          value={taskName}
-          onChange={handleTaskChange}
-        />
-        <button onClick={handleAddButton}>
-          <span>Add</span>
-        </button>
+        <InputArea onAddHandler={handleAddButton}/>
       </div>
       <div>
         <ul>
